@@ -108,15 +108,13 @@ end
 
 function display(id, chances)
     if #box[id] == 90 then
-        print('\31\207possible combinations: 10~99')
+        print('\31\207Possible combinations: 10~99')
     else
-        print('\31\207possible combinations: ' .. table.concat(box[id], ' \31\207'))
+        print('\31\207Possible combinations: ' .. table.concat(box[id], ' \31\207'))
     end
-    local remaining = math.floor(#box[id] / math.pow(2, (chances - 1)))
-    if remaining == 0 then
-        remaining = 1
-    end
-    print(string.format('\31\207best guess: %d (%d%%)',box[id][math.ceil(#box[id] / 2)], 1 / remaining * 100))
+    local best_guess = box[id][math.ceil(#box[id] / 2)];
+	local best_guess_p = 1 / #box[id] * 100;
+    print(string.format('\31\207Best guess: %d (%d%%)',best_guess, best_guess_p))
 end
 
 function locked_box_menu(menu_id)
